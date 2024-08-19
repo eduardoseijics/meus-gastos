@@ -1,5 +1,5 @@
-# Fatec
-* Projeto do novo site institucional da Fatec Araçatuba. Construido pelos aluno do curso de Análise e Desenvolvimento de Sistemas
+# Meus Gastos
+* Projeto pessoal para estudar arquitetura e padrões PHP e também para gerenciar os meus gastos pessoais.
 
 ## ✨ Pré-requisitos
 
@@ -10,7 +10,7 @@
 * Mysql para poder acessar o banco de dados
 
 **Composer**
- 
+
 * Para rodar o projeto, é necessario ter o composer instalado (https://getcomposer.org/download/)
 
 ## ✨ Instalação do projeto
