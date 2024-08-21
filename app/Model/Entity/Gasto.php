@@ -97,7 +97,7 @@ class Gasto {
   /**
    * @return \DateTime
    */
-  public function getDataCriacao(): \DateTime
+  public function getDataCriacao(): string
   {
       return $this->data_criacao;
   }
@@ -113,7 +113,7 @@ class Gasto {
   /**
    * @return \DateTime
    */
-  public function getDataUltimaAtualizacao(): \DateTime
+  public function getDataUltimaAtualizacao(): string
   {
       return $this->data_ultima_atualizacao;
   }
@@ -129,5 +129,34 @@ class Gasto {
 
   public static function getGastos($where = null, $order = null, $limit = 10, $fields = '*') {
     return (new Database('gasto'))->select($where, $order, $limit, $fields);
+  }
+
+  /**
+   * Método responsável por retornar as noticias de acordo com os parâmetros
+   * @param  string $where
+   * @param  string $order
+   * @param  string $limit
+   * @param  string $fields
+   * @return PDOStatement
+   */
+  public static function getGastoPorQuery($where = null, $order = null, $limit = null, $fields = null) {
+    return (new Database('noticias'))->select($where,$order,$limit,$fields);
+  }
+
+  public static function getGastoPorId(int $id,  $campos = '*') {
+    return self::getGastoPorQuery('id = "'.$id.'"', null, null, $campos)->fetchObject(self::class);
+  }
+
+  /**
+   * Método responsável por cadastrar um gasto
+   * @method criar
+   * @param  mixed     $dadosGasto    Instancia de Gasto ou array de dados
+   * @return bool
+   */
+  public static function criar(array $dadosGasto = null){
+    $obDatabaseNoticia = new Database('gasto');
+    $obDatabaseNoticia->insert($dadosGasto);
+
+    return true;
   }
 }

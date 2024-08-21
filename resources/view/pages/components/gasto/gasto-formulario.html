@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <section>
+      {{status}}
+      <div>
+        <h1>{{h1}}</h1>
+      </div>
+      <div class="border rounded">
+        <form method="POST" class="row p-4 col-12" enctype="multipart/form-data">
+          <div class="col-md-6 form__input-group">
+            <label for="nome" class="form-label">Nome</label>
+            <input type="nome" value="{{nome}}" name="nome" class="form-control" id="nome">
+          </div>
+          <div class="col-md-6 form__input-group">
+            <label for="text" class="form-label">Categoria</label>
+            <select name="id_categoria_gasto" id="categoria-gasto"  class="form-control">{{opcoes}}</select>
+          </div>
+          <div class="col-md-12 pt-4 pb-4 form__input-group">
+            <label for="text" class="form-label">Descrição</label>
+            <textarea class="form-control" name="descricao" id="" cols="10" rows="4">{{descricao}}</textarea>
+          </div>
+          <div class="col-md-6 form__input-group">
+            <label for="text" class="form-label">Valor</label>
+            <input type="number" value="{{valor}}" name="valor" class="form-control" id="valor">
+          </div>
+          <div class="col-md-6 form__input-group">
+            <label for="text" class="form-label">Data</label>
+            <input type="date" id="data" name="data" value="{{data}}" class="form-control"/>
+          </div>
+          <div class="col-12 form__input-group d-flex justify-content-end pt-4">
+            <a href="{{URL}}" class="btn btn-lg btn-danger">Voltar</a>
+            <button type="submit" class="btn btn-lg btn-primary ml-2">Enviar</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>
+</div>

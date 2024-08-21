@@ -15,7 +15,7 @@ class Home extends Page {
   }
 
   public static function getGastosUltimosTrintaDias() {
-    $gasto = ModelGasto::getGastos('DATEDIFF(data_criacao, CURRENT_TIMESTAMP) BETWEEN 0 AND 30', null, null, 'SUM(valor) AS valor');
-    return $gasto->fetchObject()->valor;
+    $gasto = ModelGasto::getGastos('data >= CURDATE() - INTERVAL 30 DAY;', null, null, 'SUM(valor) AS total');
+    return $gasto->fetchObject()->total;
   }
 }
