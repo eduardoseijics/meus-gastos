@@ -40,7 +40,7 @@ class Gasto extends Page {
 
   }
 
-  public static function deletarNoticia($request, $id) {
+  public static function deletarGasto($request, $id) {
     $obGasto = ModelGasto::getGastoPorId($id);
     
     // Valida se existe uma instância de depoimento
@@ -51,6 +51,6 @@ class Gasto extends Page {
     // Exclui o depoimento
     $obGasto->delete();
 
-    $request->getRouter()->redirect('/admin/noticias?status=deleted');
+    $request->getRouter()->redirect('/?status=deleted');
   }
 }

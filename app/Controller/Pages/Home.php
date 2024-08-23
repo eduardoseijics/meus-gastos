@@ -3,19 +3,17 @@
 namespace App\Controller\Pages;
 
 use App\Core\View;
-use App\Model\Entity\Gasto as ModelGasto;
+use App\Controller\Pages\Gasto\GastoListagem;
 
 class Home extends Page {
 
-  public static function getHome() {
+  public function getHome() {
+    $obGastoListagem = new GastoListagem();
+    
     $content = View::render('pages/home', [
-      'gastosUltimosTrintaDias' =>  self::getGastosUltimosTrintaDias()
+      'gastosUltimosTrintaDias' => $obGastoListagem->getGastosUltimosTrintaDias(),
+      'listagemGastos'          => $obGastoListagem->getListagemGastos()
     ]);
     return parent::getPage($content);
-  }
-
-  public static function getGastosUltimosTrintaDias() {
-    $gasto = ModelGasto::getGastos('data >= CURDATE() - INTERVAL 30 DAY;', null, null, 'SUM(valor) AS total');
-    return $gasto->fetchObject()->total;
   }
 }

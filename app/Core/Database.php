@@ -93,13 +93,23 @@ class Database{
     }
   }
 
+    /**
+   * Método responsável por executar queries dentro do banco de dados
+   * @param  string $query
+   * @param  array  $params
+   * @return PDOStatement
+   */
+  public function query($query,$params = []){
+    return $this->execute($query, $params);
+  }
+
   /**
    * Método responsável por executar queries dentro do banco de dados
    * @param  string $query
    * @param  array  $params
    * @return PDOStatement
    */
-  public function execute($query,$params = []){
+  private function execute($query,$params = []){
 
     $query = $this->slugQuery($query);
     try{

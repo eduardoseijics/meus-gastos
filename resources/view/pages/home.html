@@ -1,8 +1,17 @@
 <section>
   <div class="container">
+    <div class="row justify-content-between">
+      <div>
+        <h4>Total gasto nos ultimos <b>30</b> dias: <span style="font-size: 36px;">R${{gastosUltimosTrintaDias}}</span></h4>
+      </div>
+      <br>
+      <div class="">
+        <a href="{{URL}}/adicionar-gasto" class="btn btn-primary">Adicionar gasto</a>
+      </div>
+    </div>
     <div class="row">
-      {{gastosUltimosTrintaDias}}
-      <a href="{{URL}}/adicionar-gasto">Adicionar gasto</a>
+      {{listagemGastos}}
     </div>
   </div>
 </section>
+

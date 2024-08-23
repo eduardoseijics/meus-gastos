@@ -41,9 +41,10 @@ class Gasto {
   /**
    * @param string $nome
    */
-  public function setNome(string $nome): void
+  public function setNome(string $nome): self
   {
       $this->nome = $nome;
+      return $this;
   }
 
   /**
@@ -65,9 +66,10 @@ class Gasto {
   /**
    * @param string $valor
    */
-  public function setValor(string $valor): void
+  public function setValor(string $valor): self
   {
       $this->valor = $valor;
+      return $this;
   }
 
   /**
@@ -89,13 +91,14 @@ class Gasto {
   /**
    * @param string $descricao
    */
-  public function setDescricao(string $descricao): void
+  public function setDescricao(string $descricao): self
   {
       $this->descricao = $descricao;
+      return $this;
   }
 
   /**
-   * @return \DateTime
+   * @return string
    */
   public function getDataCriacao(): string
   {
@@ -103,15 +106,24 @@ class Gasto {
   }
 
   /**
-   * @param \DateTime $data_criacao
+   * @return string
    */
-  public function setDataCriacao(\DateTime $data_criacao): void
+  public function getData(): string
   {
-      $this->data_criacao = $data_criacao;
+      return $this->data_criacao;
   }
 
   /**
-   * @return \DateTime
+   * @param string $data_criacao
+   */
+  public function setDataCriacao( $data_criacao): self
+  {
+      $this->data_criacao = $data_criacao;
+      return $this;
+  }
+
+  /**
+   * @return string
    */
   public function getDataUltimaAtualizacao(): string
   {
@@ -119,16 +131,21 @@ class Gasto {
   }
 
   /**
-   * @param \DateTime $data_ultima_atualizacao
+   * @param string $data_ultima_atualizacao
    */
-  public function setDataUltimaAtualizacao(\DateTime $data_ultima_atualizacao): void
+  public function setDataUltimaAtualizacao(string $data_ultima_atualizacao): self
   {
       $this->data_ultima_atualizacao = $data_ultima_atualizacao;
+      return $this;
   }
 
 
   public static function getGastos($where = null, $order = null, $limit = 10, $fields = '*') {
     return (new Database('gasto'))->select($where, $order, $limit, $fields);
+  }
+
+  public static function getGastosByQuery($query) {
+    return (new Database('gasto'))->query($query);
   }
 
   /**
@@ -140,7 +157,7 @@ class Gasto {
    * @return PDOStatement
    */
   public static function getGastoPorQuery($where = null, $order = null, $limit = null, $fields = null) {
-    return (new Database('noticias'))->select($where,$order,$limit,$fields);
+    return (new Database('gasto'))->select($where,$order,$limit,$fields);
   }
 
   public static function getGastoPorId(int $id,  $campos = '*') {
