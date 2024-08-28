@@ -20,6 +20,8 @@ class Gasto {
 
   private string $data_criacao;
 
+  private string $data;
+
   private ?string $data_ultima_atualizacao;
 
   /**
@@ -110,7 +112,7 @@ class Gasto {
    */
   public function getData(): string
   {
-      return $this->data_criacao;
+      return $this->data;
   }
 
   /**

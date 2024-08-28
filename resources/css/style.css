@@ -9,3 +9,16 @@ header {
   display: flex;
   align-items: center;
 }
+
+.header-menu {
+  display: flex;
+  margin: 0;
+}
+
+.header-menu-item{
+  display: flex;
+}
+
+.header-menu-item a {
+  color: #FFF;
+}

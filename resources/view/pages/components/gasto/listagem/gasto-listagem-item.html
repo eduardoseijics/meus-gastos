@@ -1,7 +1,10 @@
 <tr>
   <td>{{nome}}</td>
-  <td>{{valor}}</td>
+  <td>R${{valor}}</td>
   <td>{{descricao}}</td>
   <td>{{data}}</td>
-  <td class="d-flex justify-content-end"><a href="{{URL}}/gasto/excluir/{{id}}" class="btn btn-sm btn-danger">Excluir</a><a href="{{URL}}/gasto/editar/{{id}}" class="btn btn-sm btn-primary ml-2">Editar</a></td>
+  <td class="d-flex justify-content-end">
+    <a href="{{URL}}/gasto/editar/{{id}}" class="btn btn-sm btn-primary">Editar</a>
+    <a href="{{URL}}/gasto/excluir/{{id}}" class="btn btn-sm btn-danger ml-2">Excluir</a>
+  </td>
 </tr>

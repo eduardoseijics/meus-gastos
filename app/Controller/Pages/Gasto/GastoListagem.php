@@ -14,14 +14,20 @@ class GastoListagem {
   }
 
   public function getListagemGastos() {
-    $query = 'SELECT a.*, DATE_FORMAT(a.data, "%d/%m/%Y") AS data, b.nome AS categoria FROM gasto AS a INNER JOIN categoria_gasto AS b WHERE a.id = b.id';
+    $query = 'SELECT a.*, b.nome AS categoria 
+              FROM gasto AS a 
+              INNER JOIN categoria_gasto AS b 
+              WHERE a.id_categoria_gasto = b.id 
+              ORDER BY a.data DESC';
     $arrGastos = ModelGasto::getGastosByQuery($query)->fetchAll(PDO::FETCH_CLASS, ModelGasto::class);
     $varsLayout = '';
     foreach ($arrGastos as $key => $obModelGasto) {
+      $valor = $obModelGasto->getValor();
+
       $varsLayout .= View::render('pages/components/gasto/listagem/gasto-listagem-item', [
         'nome' => $obModelGasto->getNome(),
-        'valor' => $obModelGasto->getValor(),
-        'data'  => $obModelGasto->getData(),
+        'valor' => number_format($valor, 2, ',', ''),
+        'data'  => date("d/m/Y", strtotime($obModelGasto->getData())),
         'descricao' => $obModelGasto->getDescricao()
       ]);
     }
